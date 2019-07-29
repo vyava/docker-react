@@ -2,7 +2,7 @@ services:
   - react-app
 
 before_install:
-  - docker build -t zafergenc/react-app-test .
+  - docker build -t zafergenc/react-app-test -f Dockerfile.dev .
 
 script:
   - docker run zafergenc/react-app-test npm run test -- --coverage
