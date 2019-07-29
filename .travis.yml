@@ -3,4 +3,6 @@ services:
 
 before_install:
   - docker build -t zafergenc/react-app-test .
-  - docker run -it zafergenc/react-app-test npm run test -- --coverage
+
+script:
+  - docker run zafergenc/react-app-test npm run test -- --coverage
