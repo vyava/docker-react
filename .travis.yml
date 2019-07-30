@@ -11,7 +11,7 @@ script:
   - docker run -e CI=true zafergenc/react-app-test npm run test -- --coverage
 
 deploy:
-  provider: elasticbealstalk
+  provider: elasticbeanstalk
   region: eu-central-1
 
   # AWS ElasticBeanstalk'ta uygulamaya verilen isim
