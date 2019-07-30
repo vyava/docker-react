@@ -1,6 +1,7 @@
 services:
   - react-app
 
+# AWS docker kullanılacağı için dil belirtilmiyor
 language: generic
 
 before_install:
@@ -8,4 +9,20 @@ before_install:
 
 script:
   - docker run -e CI=true zafergenc/react-app-test npm run test -- --coverage
+
+deploy:
+  provider: elasticbealstalk
+  region: eu-central-1
+
+  # AWS ElasticBeanstalk'ta uygulamaya verilen isim
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-345770650485"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $BEANSTALK_ACCESS_KEY_ID
+  secret_access_key:
+    secure: "$BEANSTALK_SECRET_ACCESS_KEY"
+
 
